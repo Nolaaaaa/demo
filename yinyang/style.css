@@ -1,0 +1,49 @@
+
+body{
+    background: #444444;
+}
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+#yinyang{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    margin: 100px auto;
+    background: linear-gradient(to bottom,#ffff 0%,#ffff 50%,#000000 50%,#000000 100%);
+    animation-duration: 3s; 
+    /*animation-duration 属性指定一个动画周期的时长。默认值为0s，表示无动画。*/
+    animation-name: spin;
+    animation-iteration-count: infinite;  /*infinite 无限循环播放动画。*/
+    /*animation-iteration-count CSS 属性定义动画在结束前运行的次数 可以是1次 无限循环。*/
+    animation-timing-function:linear;  
+    /*CSS animation-timing-function 属性定义CSS动画在每一动画周期中执行的节奏。*/
+}
+#yinyang:before{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    content: "";
+    top: 25%;
+    left:0;
+    border-radius: 50%;
+    border: 20px black solid;
+	background: white;
+}
+#yinyang:after{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    content: "";
+    top: 25%;
+    right:0;
+    border-radius: 50%;
+    border: 20px white solid;
+	background: black;
+}

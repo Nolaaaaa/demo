@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.window{
+    /*设置窗口*/
+    width: 300px;
+    overflow: hidden;
+    margin: 20px auto 5px;
+}
+.window .images{
+    /*如下两步可以使竖着排列的几张图片横着排列*/
+    display: flex;   
+    align-items: flex-start;
+    transition: all 0.5s;
+}
+.window .images img{
+    width: 300px;
+}
+.buttons{
+    width: 100%;
+    cursor: pointer;
+    margin: 40%;
+}
+.red{
+    color: red;
+}
+button{
+    padding: 0 3px;
+    margin: 0 2px;
+}

@@ -25,11 +25,12 @@
 .window .images img.enter{
     left: 0;
     transform: translateX(-100%);
-    z-index: 1;  
+    z-index: -1;  
 }
 .window .images img.current{
     left: 0;
     transform: translateX(0);
+    z-index: 1; 
 }
 .window .images img.leave{
     left: 0;

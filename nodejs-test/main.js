@@ -50,7 +50,7 @@ function f2(responseText){}
 
 myButton.addEventListener('click', (e)=>{
   window.jQuery.ajax({
-    url: '/frank',
+    url: '/xxx',
     method: 'get',
     headers: {
       'content-type':'application/x-www-form-urlencoded',

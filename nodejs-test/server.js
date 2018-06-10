@@ -4,7 +4,7 @@ var url = require('url')
 var port = process.argv[2]
 
 if(!port){
-  console.log('请指定端口号好不啦？\nnode server.js 8888 这样不会吗？')
+  console.log('请指定端口号好不啦？\n node server.js 8888 这样不会吗？')
   process.exit(1)
 }
 
@@ -19,7 +19,7 @@ var server = http.createServer(function(request, response){
 
   /******** 从这里开始看，上面不要看 ************/
 
-  console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
+  console.log('含查询字符串的路径\n' + pathWithQuery)
 
   if(path === '/'){
     let string = fs.readFileSync('./index.html', 'utf8')
@@ -36,12 +36,12 @@ var server = http.createServer(function(request, response){
   }else if(path==='/xxx'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/json;charset=utf-8')
-    response.setHeader('Access-Control-Allow-Origin', 'http://frank.com:8001')
+    response.setHeader('Access-Control-Allow-Origin', '')
     response.write(`
     {
       "note":{
         "to": "小谷",
-        "from": "方方",
+        "from": "nola",
         "heading": "打招呼",
         "content": "hi"
       }

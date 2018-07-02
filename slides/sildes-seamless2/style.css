@@ -1,0 +1,73 @@
+
+/*display: inline-block;利用文档流，让下面的进度条和进度条上面的nav元素同宽*/ 
+/*text-align: center; 是内联元素的居中方法。 块级元素居中，将块级设为内联元素，在父级元素中进行居中，但是要有宽度才能居中*/
+/*加了inline-block，下面会出现一个空隙，所以加了inline block一定要加vertical-align: top;  */
+/*cursor: pointer;鼠标放上去的时候变成手形*/ 
+/*nth-child(1)第一个元素的。。*/ 
+/*transition: all 0.5s;  /*添加hover过度效果*/ 
+/*不显示颜色可能是因为没有设定高度*/
+/*section.portfolio .works{ margin: 0 0 100px 0;width: 300px;height: 200px;border: 10px red solid;
+    overflow: hidden;box-shadow: 0px 1px 5px 0px  rgba(34, 34, 34, 0.5);display: inline-block} */
+*{ margin: 0px; padding: 0px;  }
+.clearfix::after{ content: ''; display: block; clear: both;}
+.portfolio{ text-align: center;height: 600px;} 
+
+.sildes{
+    display: inline-block;
+    position: relative;
+    text-align: center;height: 600px;
+}
+.sildes .controls{
+    position: absolute;
+    top: 40%;
+    left: 1%;
+    display: inline-block;
+}
+.sildes .controls a svg{
+    width: 40px;
+    height: 60px;
+    display: inline-block;
+    fill:rgba(45, 46, 45, 0.959);
+    background: rgba(250, 252, 251, 0.259);
+    border-radius: 6px;
+}
+
+.sildes .controls #previous{
+    margin-right: 418px;
+}
+.sildes .controls #next{
+    margin-left: 400px;
+}
+.sildes .buttonWrapper{
+    position: absolute;
+    top: 89%;
+    left: 46%;
+}
+.sildes .buttonWrapper .button{
+    width: 12px;
+    height: 12px;
+    border-radius: 7px;
+    margin: 5px;
+
+}
+.sildes .buttonWrapper .button.highlight{
+    
+}
+.sildes .works{
+    /*设置窗口*/
+    box-sizing: border-box;
+    width: 940px;
+    height: 550px;
+    overflow: hidden;
+    margin:20px auto;
+    box-shadow: 0px 1px 5px 0px  rgba(34, 34, 34, 0.5);
+}
+.sildes .works .worksPic{
+    display: flex;   
+    align-items: flex-start;
+    top: 0;
+    transition: all 1s; 
+}
+.sildes .works .worksPic img{
+    width: 100%;
+}

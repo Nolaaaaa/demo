@@ -22,7 +22,7 @@
     /*如果设置了绝对定位后，窗口一定要设置高度*/
     position: absolute;
 }
-.window .images img.enter{
+.window .images img.enter{ 
     left: 0;
     transform: translateX(-100%);
     z-index: -1;  
@@ -35,4 +35,4 @@
 .window .images img.leave{
     left: 0;
     transform: translateX(100%);
-}
+}  

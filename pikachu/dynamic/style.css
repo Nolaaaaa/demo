@@ -24,6 +24,7 @@ body{
     overflow: hidden;
     height: 100%;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-size: 12px;
 }
 .preview{
     height: 100%;

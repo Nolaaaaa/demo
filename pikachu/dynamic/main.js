@@ -29,7 +29,7 @@
             border: 2px solid black;
         }
         .eye::before{
-            /* 画眼睛白色 */
+            /* 画眼睛白 */
             position: absolute;
             content: '';
             width: 24px;
@@ -109,7 +109,7 @@
             left: 50%;
             border-radius: 75px;
         }
- 
+        /* 好了，我画完了 */
     `
     writeCode('',code)
     function writeCode(prefix,code,fn){

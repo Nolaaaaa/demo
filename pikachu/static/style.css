@@ -18,6 +18,9 @@ body{
     height: 165px;
     position: relative;
 }
+.wrapper > :not(:last-child) {
+    z-index: 1;
+}
 .nose{
 /* 定位让鼻子居中 */
     position: absolute;
@@ -111,7 +114,6 @@ body{
     margin-top: 56px;
     left: 50%;
     margin-left: -80px;
-    z-index: -1;
     overflow: hidden;
 }
 .lowerLip{

@@ -11,6 +11,7 @@ body{
     flex-direction: column;
     height: 100vh;
     font-size: 14px;
+    position: relative;
 }
 .code-wrapper{
     flex: 1;
@@ -23,13 +24,13 @@ body{
 .code{
     overflow: hidden;
     height: 100%;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Menlo',Courier,monospace;
     font-size: 12px;
 }
 .preview{
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: center;   
     align-items: center;
 }
 .wrapper{
@@ -54,4 +55,29 @@ body{
     height: 200px;
     bottom: -99px;
     position: absolute;
+}
+.actions{
+    margin-top: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;  /* 竖着排 */
+    align-items: center;
+}
+.actions button{
+    margin: 6px 10px;
+    background: #ecf5ff;
+    padding: 8px 10px;
+    border: 1px solid #b3d8ff;
+    border-radius: 4px;
+    color: #409eff;
+}
+.actions button.active,
+.actions button:hover{
+    background: #409eff;
+    color: #ecf5ff;
+}
+.actions button:focus{
+    outline: none;
 }

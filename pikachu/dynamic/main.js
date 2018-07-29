@@ -30,6 +30,7 @@
         }
         .eye::before{
             /* 画眼睛白 */
+            background: white;
             position: absolute;
             content: '';
             width: 24px;
@@ -38,7 +39,6 @@
             left: 2px;
             border: 2px solid black;
             border-radius: 50%;
-            background: white;
         }
         .eye.left{
             right: 50%;
@@ -109,23 +109,44 @@
             left: 50%;
             border-radius: 75px;
         }
-        /* 好了，我画完了 */
+        /* 好啦我画完啦，萌萌哒的皮卡丘送给你 */
     `
+    //写代码
     writeCode('',code)
+    //调速度
+    changeSpeed()
+    var duration = 50; //速度默认为50
     function writeCode(prefix,code,fn){
         let domCode = document.querySelector('.code')
         let styleTag = document.querySelector('.styleTag')
         domCode.innerHTML = prefix || ''
         let n = 0
-        let timer = setInterval(()=>{
+        let timer = setTimeout(function run(){
             n += 1
             domCode.innerHTML = Prism.highlight(prefix + code.substring(0, n), Prism.languages.css); //页码放到HTML中同时让代码高亮
             domCode.scrollTop = domCode.scrollHeight
             styleTag.innerHTML = prefix + code.substring(0,n)   //code的内容放code中，文字部分注释起来
-            if (n >= code.length) {     //停止计时器
-                window.clearInterval(timer)
-                fn.call()
+            if (n < code.length) {     //停止计时器
+                setTimeout(run, duration)
+            }else{
+                fn&fn.call()
             }
-        },1)
+        },duration)
     }
+    function changeSpeed(){
+        let button = document.querySelector(".actions");
+        button.addEventListener('click',function(e){
+                let target = e.target   //找到绑定事件的元素
+                let speed = target.getAttribute('data-speed')  //获取属性内容
+                let meAndBrother = button.children
+                for (let i=0;i<meAndBrother.length;i++){
+                    meAndBrother[i].classList.remove('active')
+                }
+                target.classList.add('active')
+                if(speed === 'slow') duration = 100 ;
+                if(speed === 'normal') duration = 50 ;
+                if(speed === 'fast') duration = 10 ;
+        },false)
+    }
+
 }.call()

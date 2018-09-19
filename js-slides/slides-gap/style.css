@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
 }
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 .window{
     /*设置窗口*/
     width: 300px;
@@ -18,9 +23,9 @@
     width: 300px;
 }
 .buttons{
-    width: 100%;
     cursor: pointer;
-    margin: 40%;
+    display: flex;
+    justify-content: center;
 }
 .red{
     color: red;

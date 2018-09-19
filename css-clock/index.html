@@ -7,31 +7,32 @@
   <title>Document</title>
   <style>
     body {
-      box-sizing: border-box;
+      box-sizing: content-box;
     }
     .clock {
-      width: 400px;
-      height: 400px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      border: 10px solid black;
+      border: 8px solid black;
       position: relative;
     }
     .second {
-      height: 180px;
+      height: 90px;
       position: absolute;
-      left: 199px;
-      top: 20px;
+      left: 99px;
+      top: 10px;
       width: 2px;
       background: rgb(241, 109, 21);
       transform-origin: bottom center;
       transform: rotate(150deg);
       animation: move 60s infinite steps(60, start);
+      z-index: 10;
     }
     .minute {
-      height: 120px;
+      height: 60px;
       position: absolute;
-      left: 198px;
-      top: 80px;
+      left: 98px;
+      top: 40px;
       width: 4px;
       background: black;
       transform-origin: bottom center;
@@ -39,10 +40,10 @@
       animation: move 3600s infinite normal linear;
     }
     .hour {
-      height: 60px;
+      height: 30px;
       position: absolute;
-      left: 197px;
-      top: 140px;
+      left: 97px;
+      top: 70px;
       width: 6px;
       background: black;
       transform-origin: bottom center;
@@ -51,7 +52,7 @@
     }
     @keyframes move  { 
       0% {
-        transform: rotate(0deg)
+        transform: rotate(-0deg)
       }
 
       100% {
@@ -59,28 +60,67 @@
       }
     }
     .dot {
-      width: 10px;
-      height: 10px;
+      width: 6px;
+      height: 6px;
       position: absolute;
       background: black;
-      left: 195px;
-      top: 195px;
+      left: 97px;
+      top: 97px;
       border-radius: 50%;
     }
-    .time {
-      /* border-left: 1px solid red; */
-      height: 400px;
+    .dot::after {
+      content: '';
+      width: 4px;
+      height: 4px;
       position: absolute;
-      left: 200px;
+      background: rgb(241, 109, 21);
+      left: 1px;
+      top: 1px;
+      border-radius: 50%;
+    }
+
+    .time {
+      /* border-left: 1px solid red;
+      border-right: 1px solid red; */
+      height: 200px;
+      position: absolute;
+      left: 99px;
       top: 0;
+      display: flex;
+      justify-content: center;
       transform-origin: center;
     }
     .time span{
       /* border: 1px solid red; */
       position: absolute;
+      /* display: none; */
       transform-origin: center;
     }
     .t1 {transform: rotate(30deg);}
+    .t2 {transform: rotate(60deg);}
+    .t3 {transform: rotate(90deg);}
+    .t4 {transform: rotate(120deg);}
+    .t5 {transform: rotate(150deg);}
+    .t6 {transform: rotate(180deg);}
+    .t7 {transform: rotate(210deg);}
+    .t8 {transform: rotate(240deg);}
+    .t9 {transform: rotate(270deg);}
+    .t10 {transform: rotate(300deg);}
+    .t11 {transform: rotate(330deg);}
+    .t12 {transform: rotate(360deg);}
+
+    .t1 span{transform: rotate(-30deg);}
+    .t2 span{transform: rotate(-60deg);}
+    .t3 span{transform: rotate(-90deg);}
+    .t4 span{transform: rotate(-120deg);}
+    .t5 span{transform: rotate(-150deg);}
+    .t6 span{transform: rotate(-180deg);}
+    .t7 span{transform: rotate(-210deg);}
+    .t8 span{transform: rotate(-240deg);}
+    .t9 span{transform: rotate(-270deg);}
+    .t10 span{transform: rotate(-300deg);}
+    .t11 span{transform: rotate(-330deg);}
+    .t12 span{transform: rotate(-360deg);}
     .t2 {transform: rotate(60deg);}
     .t3 {transform: rotate(90deg);}
     .t4 {transform: rotate(120deg);}

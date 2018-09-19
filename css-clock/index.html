@@ -19,42 +19,42 @@
     .second {
       height: 180px;
       position: absolute;
-      left: 200px;
+      left: 199px;
       top: 20px;
       width: 2px;
       background: rgb(241, 109, 21);
       transform-origin: bottom center;
       transform: rotate(150deg);
-      animation: shizhong 60s infinite normal linear;
+      animation: move 60s infinite steps(60, start);
     }
     .minute {
       height: 120px;
       position: absolute;
-      left: 200px;
+      left: 198px;
       top: 80px;
       width: 4px;
       background: black;
       transform-origin: bottom center;
       transform: rotate(150deg);
-      animation: shizhong 3600s infinite normal linear;
+      animation: move 3600s infinite normal linear;
     }
     .hour {
       height: 60px;
       position: absolute;
-      left: 200px;
+      left: 197px;
       top: 140px;
       width: 6px;
       background: black;
       transform-origin: bottom center;
       transform: rotate(150deg);
-      animation: shizhong 216000s infinite normal linear;
+      animation: move 216000s infinite normal linear;
     }
-    @keyframes shizhong  { 
-      from {
+    @keyframes move  { 
+      0% {
         transform: rotate(0deg)
       }
 
-      to {
+      100% {
         transform: rotate(360deg)
       }
     }

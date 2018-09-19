@@ -39,6 +39,7 @@
       transform-origin: bottom center;
       transform: rotate(150deg);
       animation: move 3600s infinite normal linear;
+      z-index: 9;
     }
     .hour {
       height: 40px;
@@ -50,6 +51,7 @@
       transform-origin: bottom center;
       transform: rotate(150deg);
       animation: move 216000s infinite normal linear;
+      z-index: 8;
     }
     @keyframes move  { 
       0% {
@@ -68,6 +70,7 @@
       left: 97px;
       top: 97px;
       border-radius: 50%;
+      z-index: 9;
     }
     .dot::after {
       content: '';
@@ -78,6 +81,7 @@
       left: 1px;
       top: 1px;
       border-radius: 50%;
+      z-index: 11;
     }
 
     .time {

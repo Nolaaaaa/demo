@@ -15,7 +15,7 @@
     var n = 0
 
     // 点击画布下棋
-    canvas.onmouseup = function (event) {
+    canvas.onmousedown = function (event) {
       // console.log(event)
 
       if (n === 0) {

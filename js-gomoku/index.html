@@ -5,10 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>gomoku</title>
-  <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+    .canvas-container {
+      height: 100vh;
+      width: 100vw;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
-  <canvas id="canvas" width="300px" height="300px"></canvas>
+  <div class="canvas-container">
+    <canvas id="canvas" width="900px" height="900px" background="red" style="border:4px solid black;"></canvas>
+  </div>
   <script src="./main.js"></script>
 </body>
 </html> 

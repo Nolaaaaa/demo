@@ -16,3 +16,5 @@ Some sapid demo from my daily life ，Vue、nodejs、webpack、CSS
 [轮播图-seamless2](https://nolaaaaa.github.io/myDemo/js-slides/sildes-seamless2/)
 
 [轮播图-appleStyle](https://nolaaaaa.github.io/myDemo/js-slides/slides-apple-style/)
+
+[五子棋](https://nolaaaaa.github.io/myDemo/js-gomoku/)

@@ -3,28 +3,31 @@
   var canvasname = document.getElementById("canvas");
   if (canvasname === null) return false;
   if (canvasname.getContext) {
-    var context = canvasname.getContext('2d');
+    let context = canvasname.getContext('2d');
 
     // 画棋盘
     getViewPort()
+    
+    let width = canvas.width/15
+    let height = canvas.height/15
   
     // 画棋盘的格子
-    for (var i = 0; i < 15; i++) {
-      for (var j = 0; j < 15; j++) {
-        context.strokeRect(canvas.height/15 * j, canvas.width/15 * i, canvas.height/15, canvas.width/15);
+    for (let i = 0; i < 15; i++) {
+      for (let j = 0; j < 15; j++) {
+        context.strokeRect(height * j, width * i, height, width);
       }
     }
 
     // 下棋
     {
       // 棋子初始化，先下白棋还是黑棋，1 是白的，0是黑的
-      var n = 0
+      let n = 0
       canvas.onmousedown = function (event) {
         if (n === 0) {
-          playChess('#000000', 24)
+          playChess('#000000', width/2.5)
           n = n + 1
         } else if (n === 1) {
-          playChess('#ffffff', 24)
+          playChess('#ffffff', width/2.5)
           n = n - 1
         }
       }
@@ -39,18 +42,16 @@
 
 
     /************函数部分不要看***********/
-    
     // 检测所使用的设备，并确定画布的宽高
     function getViewPort(){
       // console.log(navigator.platform)
-      var viewHeight = window.innerHeight||document.documentElement.clientHeight;
-      var viewWidth = window.innerWidth||document.documentElement.clientWidth;
+      var viewHeight = Math.floor(window.innerHeight||document.documentElement.clientHeight)
+      var viewWidth = Math.floor(window.innerWidth||document.documentElement.clientWidth)
       if(navigator.platform.indexOf('Win') === 0 || navigator.platform.indexOf('Mac') === 0 || navigator.platform.indexOf('iPhone') === 0 || navigator.platform.indexOf('iPhone') === 0 || navigator.platform.indexOf('ipad') === 0){
           canvas.width = Math.min(viewWidth, viewHeight) - 100
           canvas.height = Math.min(viewWidth, viewHeight) - 100
       }
     }
-
     // 下棋的函数
     function playChess(fillColor, radius) {
       context.fillStyle = fillColor

@@ -6,35 +6,51 @@
     var context = canvasname.getContext('2d');
 
     // 画棋盘
-    // 确定棋盘的宽高
-    canvas.width = 900;
-    canvas.height = 900;
+    getViewPort()
+  
     // 画棋盘的格子
     for (var i = 0; i < 15; i++) {
       for (var j = 0; j < 15; j++) {
         context.strokeRect(canvas.height/15 * j, canvas.width/15 * i, canvas.height/15, canvas.width/15);
       }
     }
-    // 初始化，先下白棋还是黑棋，1 是白的，0是黑的
-    var n = 0
 
-    // 点击画布下棋
-    canvas.onmousedown = function (event) {
-      // console.log(event)
-
-      if (n === 0) {
-        //下黑棋
-        playChess('#000000', 24)
-        n = n + 1
-      } else if (n === 1) {
-        //下白棋
-        playChess('#ffffff', 24)
-        n = n - 1
+    // 下棋
+    {
+      // 棋子初始化，先下白棋还是黑棋，1 是白的，0是黑的
+      var n = 0
+      canvas.onmousedown = function (event) {
+        if (n === 0) {
+          playChess('#000000', 24)
+          n = n + 1
+        } else if (n === 1) {
+          playChess('#ffffff', 24)
+          n = n - 1
+        }
       }
     }
 
 
+
+
+
+
+
+
+
     /************函数部分不要看***********/
+    
+    // 检测所使用的设备，并确定画布的宽高
+    function getViewPort(){
+      // console.log(navigator.platform)
+      var viewHeight = window.innerHeight||document.documentElement.clientHeight;
+      var viewWidth = window.innerWidth||document.documentElement.clientWidth;
+      if(navigator.platform.indexOf('Win') === 0 || navigator.platform.indexOf('Mac') === 0 || navigator.platform.indexOf('iPhone') === 0 || navigator.platform.indexOf('iPhone') === 0 || navigator.platform.indexOf('ipad') === 0){
+          canvas.width = Math.min(viewWidth, viewHeight) - 100
+          canvas.height = Math.min(viewWidth, viewHeight) - 100
+      }
+    }
+
     // 下棋的函数
     function playChess(fillColor, radius) {
       context.fillStyle = fillColor

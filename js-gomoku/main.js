@@ -56,17 +56,17 @@
     function playChess(fillColor, radius) {
       context.fillStyle = fillColor
         context.strokeStyle = '#000000'
-        var x = event.layerX;
-        var y = event.layerY;
+        var x = event.layerX
+        var y = event.layerY
         drawCircle(x, y, radius)
     }
 
     // 画一个圆的函数
     function drawCircle(x, y, radius) {
-      context.beginPath();
-      context.arc(x-2, y-2, radius, 0, Math.PI * 2);
-      context.fill();
-      context.stroke();
+      context.beginPath()
+      context.arc(x-2, y-2, radius, 0, Math.PI * 2)
+      context.fill()
+      context.stroke()
     }
   }
 

@@ -66,7 +66,7 @@
     // 画一个圆的函数
     function drawCircle(x, y, radius) {
       context.beginPath()
-      context.arc(x-2, y-2, radius, 0, Math.PI * 2)
+      context.arc(x-4, y-4, radius, 0, Math.PI * 2)
       context.fill()
       context.stroke()
     }

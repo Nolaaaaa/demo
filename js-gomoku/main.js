@@ -11,9 +11,14 @@
     
     let width = canvas.width/15
     
+
     // 画棋盘的格子
+    var arr = new Array();
     for (let i = 0; i < 15; i++) {
+      arr[i] = new Array();
       for (let j = 0; j < 15; j++) {
+        arr[i][j] = ''
+        console.log(arr[i][j])
         context.strokeRect(width * j, width * i, width, width);
       }
     }
@@ -23,7 +28,6 @@
       // 棋子初始化，先下白棋还是黑棋，1 是白的，0是黑的ssss
       let n = 0
       canvas.onmousedown = function (event) {
-        console.log(event)
         if (n === 0) {
           playChess('#000000', width/2.5)
           n = n + 1

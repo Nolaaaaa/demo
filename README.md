@@ -1,4 +1,4 @@
-# myDemo
+# demo
 Some sapid demo from my daily life ，Vue、nodejs、webpack、CSS
 
 [阴阳图](https://nolaaaaa.github.io/demo/css-yinyang/)

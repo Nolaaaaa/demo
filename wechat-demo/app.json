@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/rich-text/rich-text",
+    "pages/radar/radar",
+    "pages/web-view/web-view"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

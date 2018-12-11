@@ -1,0 +1,8 @@
+<button class='userinfo'
+  open-type="getUserInfo" 
+  bindgetuserinfo="getuserinfo">获取用户信息</button>
+<view class='container'>
+  <navigator url="./rich-text/rich-text">rich-text</navigator>
+  <navigator url="./radar/radar">radar-picture</navigator>
+  <navigator url="./web-view/web-view">web-view</navigator>
+</view>

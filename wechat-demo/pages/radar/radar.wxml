@@ -1,0 +1,7 @@
+<view class='canvasCon' bindtap='clickCanvas'>
+  <canvas class="canvas" canvas-id="radarcanvas1" disable-scroll="false" style="width:{{canvasW}}rpx; height:{{canvasH}}rpx;" />
+  <canvas class="canvas" canvas-id="radarcanvas2" disable-scroll="false" style="width:{{canvasW}}rpx; height:{{canvasH}}rpx;" />
+  <canvas class="canvas" canvas-id="radarcanvas3" disable-scroll="false" style="width:{{canvasW}}rpx; height:{{canvasH}}rpx;" />
+  <canvas class="canvas" canvas-id="radarcanvas4" disable-scroll="false" style="width:{{canvasW}}rpx; height:{{canvasH}}rpx;" />
+  <canvas class="canvas" canvas-id="radarcanvas5" disable-scroll="false" style="width:{{canvasW}}rpx; height:{{canvasH}}rpx;" />
+</view>

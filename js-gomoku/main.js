@@ -60,20 +60,27 @@
 
     // 下棋的函数
     function playChess(fillColor, radius) {
+      // 设置棋子内部填充颜色和边的颜色
       context.fillStyle = fillColor
       context.strokeStyle = '#000000'
+
       // 点击的坐标位置
       var x = event.layerX
       var y = event.layerY
       var indX = Math.round(x/width)
       var indY = Math.round(y/height)
       
-      console.log(arr[indX][indY])
+      // 禁止下在边缘上
+      if(indX == 0 || indX == 15 || indY == 0 || indY == 15) return 
+
+      // 下过的地方不允许下
       if(arr[indX][indY] == 1) {
         console.log('这里已经下过啦，换个地方试试')
         return 
       }
+      // 存下下棋的状态
       arr[indX][indY] = 1
+
       // 让棋子下在交叉线的位置
       x = indX * width + 4
       y = indY * height + 4

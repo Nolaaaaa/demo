@@ -9,16 +9,22 @@
     // 画棋盘
     setChecker()
     
-    let width = canvas.width/15
-    let height = canvas.height/15
+    const width = canvas.width/15
+    const height = canvas.height/15
     
 
-    // 画棋盘的格子，并建一个二维数组用来存下过的棋
-    var arr = new Array();
-    for (let i = 0; i < 15; i++) {
+    // 建一个二维数组用来存下过的棋，i 指 y 轴坐标，j 指 x 轴坐标
+    const arr = new Array();
+    for (let i = 1; i < 15; i++) {
       arr[i] = new Array()
-      for (let j = 0; j < 15; j++) {
+      for (let j = 1; j < 15; j++) {
         arr[i][j] = 0
+      }
+    }
+
+    // 画棋盘的格子
+    for (let i = 0; i < 15; i++) {
+      for (let j = 0; j < 15; j++) {
         context.strokeRect(width * i, height * j, width, height)
       }
     }
@@ -40,13 +46,14 @@
 
 
 
+
     /************函数部分不要看***********/
 
     // 检测所使用的设备，并确定画布的宽高
     function setChecker(){
       // console.log(navigator.platform)
-      var viewHeight = Math.floor(window.innerHeight||document.documentElement.clientHeight)
-      var viewWidth = Math.floor(window.innerWidth||document.documentElement.clientWidth)
+      let viewHeight = Math.floor(window.innerHeight||document.documentElement.clientHeight)
+      let viewWidth = Math.floor(window.innerWidth||document.documentElement.clientWidth)
       canvas.width = Math.min(viewWidth, viewHeight) - 60
       canvas.height =  canvas.width
 
@@ -59,27 +66,72 @@
       context.strokeStyle = '#000000'
 
       // 点击的坐标位置
-      var x = event.layerX
-      var y = event.layerY
-      var indX = Math.round(x/width)
-      var indY = Math.round(y/height)
-      
+      let x = event.layerX
+      let y = event.layerY
+      let indX = Math.round(x/width)
+      let indY = Math.round(y/height)
+
       // 禁止下在边缘上
       if(indX == 0 || indX == 15 || indY == 0 || indY == 15) return 
 
+
       // 下过的地方不允许下
-      if(arr[indX][indY] !== 0) {
-        console.log('这里已经下过啦，换个地方试试')
-        return 
-      }
+      if(arr[indY][indX] !== 0) return
+
       // 保存下棋的状态
-      arr[indX][indY] = n
+      arr[indY][indX] = n
 
       // 让棋子下在交叉线的位置
       x = indX * width + 4
       y = indY * height + 4
       drawCircle(x, y, radius)
-      console.log(arr)
+      winOrLose(indY, indX)
+    }
+
+    // 判断输赢
+    function winOrLose(x, y) { 
+      // console.log(x,y)
+      // console.log(arr)
+      let count = 1
+      // 横向判断
+      for(let i = 1; i < 15; i++) {
+        if(arr[x][i] !== 0 && arr[x][i-1] == arr[x][i]) {
+          count += 1
+        } else {
+          count = 1
+        }
+        if(count >= 5) {
+          setTimeout( ()=> {
+            if(arr[x][i] === 1) {
+              alert('黑子赢了')
+              return 
+            } else {
+              alert('白子赢了')
+              return   
+            }
+          },100)
+        }
+      }
+      count = 1
+      // 竖向判断
+      for(let i = 1; i < 15; i++) {
+        if(arr[i][y] !== 0 && arr[i-1][y] == arr[i][y]) {
+          count += 1
+        } else {
+          count = 1
+        }
+        if(count >= 5) {
+          setTimeout( ()=> {
+            if(arr[i][y] === 1) {
+              alert('黑子赢了')
+              return 
+            } else {
+              alert('白子赢了')
+              return   
+            }
+          },100)
+        }
+      }
     }
 
     // 画一个圆的函数

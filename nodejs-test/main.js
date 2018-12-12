@@ -72,50 +72,50 @@ myButton.addEventListener('click', (e)=>{
 调用Promise，成功了调用resolve，失败了调用reject
 
 */
-window.Promise = function(fn){
-    // ...
-    return {
-      then: function(){}
-    }
+window.Promise = function (fn) {
+  // ...
+  return {
+    then: function () { }
   }
+}
 
 
 //封装的函数
-window.jQuery.ajax = function({url,method,body,hearders}){
-    return new Promise(function(resolve,reject){
-        let request = new XMLHttpRequest()
-        request.open(method,url)
-        for(let key in headers){
-            let value = headers[key]
-            request.setRequestHeader(key,value)
+window.jQuery.ajax = function ({ url, method, body, hearders }) {
+  return new Promise(function (resolve, reject) {
+    let request = new XMLHttpRequest()
+    request.open(method, url)
+    for (let key in headers) {
+      let value = headers[key]
+      request.setRequestHeader(key, value)
+    }
+    request.onreadystatechange = function () {
+      if (request.readyState === 4) {
+        console.log('请求响应完毕了')
+        if (request.status >= 200 && request.status < 300) {
+          resolve.call(undefined, request.responseText)
+        } else if (request.status >= 400) {
+          reject.call(undefined, request)
         }
-        request.onreadystatechange=function(){
-            if(request.readyState === 4){
-                console.log('请求响应完毕了')
-                if(request.status >= 200 && request.status < 300){
-                    resolve.call(undefined,request.responseText)
-                }else if(request.status >= 400){
-                    reject.call(undefined,request)
-                }
-            }
-        }
-        request.send(body)
-    })
+      }
+    }
+    request.send(body)
+  })
 }
 
 
 //调用函数
-myButton.addEventListener('click',function(e){
-        let promise = window.jQuery.ajax({
-            url: '/xxx',
-            method: 'get',
-            headers: {
-                'content-type':'application/x-www-form-urlencoded',
-                'nola': '18'
-              },
-        })  
-        promise.then(
-          function(text){console.log(text)},      //如果上面的window.jQuery.ajax成功了则调用这个
-          function(request){console.log(request)} //失败了调用这个
-        )
+myButton.addEventListener('click', function (e) {
+  let promise = window.jQuery.ajax({
+    url: '/xxx',
+    method: 'get',
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'nola': '18'
+    },
+  })
+  promise.then(
+    function (text) { console.log(text) },      //如果上面的window.jQuery.ajax成功了则调用这个
+    function (request) { console.log(request) } //失败了调用这个
+  )
 })

@@ -40,7 +40,7 @@ var server = http.createServer(function(request, response){
     response.write(`
     {
       "note":{
-        "to": "小谷",
+        "to": "haha",
         "from": "nola",
         "heading": "打招呼",
         "content": "hi"

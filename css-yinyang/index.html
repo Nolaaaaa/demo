@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>阴阳图</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>阴阳图</title>
+  <style>
+    body { background: #444444; }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    #yinyang {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: relative;
+      margin: 100px auto;
+      background: linear-gradient(to bottom, #ffff 0%, #ffff 50%, #000000 50%, #000000 100%);
+      /*animation-duration 属性指定一个动画周期的时长。默认值为0s，表示无动画。*/
+      animation-duration: 3s;
+      animation-name: spin;
+      /*infinite 循环播放。animation-iteration-count：动画在结束前运行的次数 可以是1次 无限循环。*/
+      animation-iteration-count: infinite;
+      /*CSS animation-timing-function：CSS动画在每一动画周期中执行的节奏。*/
+      animation-timing-function: linear;
+    }
+    #yinyang:before {
+      position: absolute;
+      width: 10px; height: 10px;
+      content: ""; background: white;
+      top: 25%;left: 0;
+      border: 20px black solid; border-radius: 50%;
+    }
+    #yinyang:after {
+      position: absolute;
+      width: 10px; height: 10px;
+      content: ""; background: black;
+      top: 25%; right: 0;
+      border: 20px white solid; border-radius: 50%;
+    }
+  </style>
 </head>
+
 <body>
-    <div id="yinyang"></div>
+  <div id="yinyang"></div>
 </body>
+
 </html>

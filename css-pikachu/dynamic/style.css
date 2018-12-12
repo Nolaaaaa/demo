@@ -47,7 +47,7 @@ body{
     margin-top: 56px;
     left: 50%;
     margin-left: -80px;
-    overflow: auto;
+    overflow: hidden
 }
 .lowerLip::after{
     content: '';

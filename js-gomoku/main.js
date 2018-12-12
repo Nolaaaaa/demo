@@ -25,14 +25,14 @@
 
     // 下棋
     {
-      // 棋子初始化，先下白棋还是黑棋，1 是白的，0是黑的ssss
-      let n = 0
+      // 棋子初始化，先下白棋还是黑棋，2 是白的，1是黑的ssss
+      let n = 1
       canvas.onmousedown = function (e) {
-        if (n === 0) {
-          playChess('#000000', width/2.5)
+        if (n === 1) {
+          playChess('#000000', width/2.5, n)
           n = n + 1
-        } else if (n === 1) {
-          playChess('#ffffff', width/2.5)
+        } else if (n === 2) {
+          playChess('#ffffff', width/2.5, n)
           n = n - 1
         }
       }
@@ -53,7 +53,7 @@
     }
 
     // 下棋的函数
-    function playChess(fillColor, radius) {
+    function playChess(fillColor, radius, n) {
       // 设置棋子内部填充颜色和边的颜色
       context.fillStyle = fillColor
       context.strokeStyle = '#000000'
@@ -68,18 +68,18 @@
       if(indX == 0 || indX == 15 || indY == 0 || indY == 15) return 
 
       // 下过的地方不允许下
-      if(arr[indX][indY] == 1) {
+      if(arr[indX][indY] !== 0) {
         console.log('这里已经下过啦，换个地方试试')
         return 
       }
       // 保存下棋的状态
-      arr[indX][indY] = 1
+      arr[indX][indY] = n
 
       // 让棋子下在交叉线的位置
       x = indX * width + 4
       y = indY * height + 4
       drawCircle(x, y, radius)
-      // console.log(arr)
+      console.log(arr)
     }
 
     // 画一个圆的函数

@@ -13,19 +13,13 @@
     let height = canvas.height/15
     
 
-    // 画棋盘的格子
-    for (let i = 0; i < 15; i++) {
-      for (let j = 0; j < 15; j++) {
-        context.strokeRect(width * i, height * j, width, height)
-      }
-    }
-
-    // 建一个二维数组
+    // 画棋盘的格子，并建一个二维数组用来存下过的棋
     var arr = new Array();
-    for (let i = 1; i < 15; i++) {
+    for (let i = 0; i < 15; i++) {
       arr[i] = new Array()
-      for (let j = 1; j < 15; j++) {
+      for (let j = 0; j < 15; j++) {
         arr[i][j] = 0
+        context.strokeRect(width * i, height * j, width, height)
       }
     }
 
@@ -78,13 +72,14 @@
         console.log('这里已经下过啦，换个地方试试')
         return 
       }
-      // 存下下棋的状态
+      // 保存下棋的状态
       arr[indX][indY] = 1
 
       // 让棋子下在交叉线的位置
       x = indX * width + 4
       y = indY * height + 4
       drawCircle(x, y, radius)
+      // console.log(arr)
     }
 
     // 画一个圆的函数

@@ -14,7 +14,3 @@ Some sapid demo from my daily life ，Vue、nodejs、webpack、CSS
 [轮播图-gap](https://nolaaaaa.github.io/demo/js-slides/slides-gap/)
 
 [轮播图-seamless](https://nolaaaaa.github.io/demo/js-slides/slides-seamless/)
-
-[轮播图-seamless2](https://nolaaaaa.github.io/demo/js-slides/sildes-seamless2/)
-
-[轮播图-appleStyle](https://nolaaaaa.github.io/demo/js-slides/slides-apple-style/)

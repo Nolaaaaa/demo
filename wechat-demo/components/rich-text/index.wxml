@@ -1,6 +1,0 @@
-<view class="rich_text">
-  <cap-rich-text
-    html="{{html}}"
-  >
-  </cap-rich-text>
-</view>

@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <websocket/>
+    <HelloWorld/>
   </div>
 </template>
 
 <script>
-import websocket from '@/pages/websocket'
+import HelloWorld from '@/components/HelloWorld'
 export default {
   name: 'App',
   components: {
-    websocket,
+    HelloWorld,
   },
   methods: {
   }

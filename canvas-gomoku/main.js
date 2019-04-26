@@ -85,54 +85,8 @@
       x = indX * width + 4
       y = indY * height + 4
       drawCircle(x, y, radius)
-      winOrLose(indY, indX)
     }
 
-    // 判断输赢
-    function winOrLose(x, y) { 
-      // console.log(x,y)
-      // console.log(arr)
-      let count = 1
-      // 横向判断
-      for(let i = 1; i < 15; i++) {
-        if(arr[x][i] !== 0 && arr[x][i-1] == arr[x][i]) {
-          count += 1
-        } else {
-          count = 1
-        }
-        if(count >= 5) {
-          setTimeout( ()=> {
-            if(arr[x][i] === 1) {
-              alert('黑子赢了')
-              return 
-            } else {
-              alert('白子赢了')
-              return   
-            }
-          },100)
-        }
-      }
-      count = 1
-      // 竖向判断
-      for(let i = 1; i < 15; i++) {
-        if(arr[i][y] !== 0 && arr[i-1][y] == arr[i][y]) {
-          count += 1
-        } else {
-          count = 1
-        }
-        if(count >= 5) {
-          setTimeout( ()=> {
-            if(arr[i][y] === 1) {
-              alert('黑子赢了')
-              return 
-            } else {
-              alert('白子赢了')
-              return   
-            }
-          },100)
-        }
-      }
-    }
 
     // 画一个圆的函数
     function drawCircle(x, y, radius) {

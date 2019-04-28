@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <HelloWorld/>
+    <Tetris/>
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld'
+import Tetris from '@/pages/Tetris'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Tetris,
   },
   methods: {
   }

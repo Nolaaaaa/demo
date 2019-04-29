@@ -1,22 +1,22 @@
 <template>
   <div class="game-area">
-    <canvas id="canvas" style="border:2px solid #67c23a;"></canvas>
+    <canvas id="canvas" style="border: 1px solid #458B00;"></canvas>
   </div>
 </template>
 
 <script>
+import {square,squareColor} from '@/assets/js/Tetris/square.js'
 export default {
   data() {
     return {
       canvas: '',
       context: '',
       gameData: '',  // 游戏数据
-      curData: '',   // 当前棋子
-      location: '',  // 棋子下落的位置
+      curData: [],   // 当前棋子
+      position: { x: 0,y: 0 }   ,  // 棋子下落的位置
     }
   },
   mounted() {
-    // 初始化canvas
     const canvas = document.getElementById("canvas")
     if (canvas === null) return false
     if (canvas.getContext) {
@@ -24,51 +24,112 @@ export default {
       this.canvas = canvas
       this.context = context
 
-      // 动态设置棋盘宽高
       this.setCanvas()
 
-      // 画棋盘上的格子、游戏数据初始
-      const height = canvas.height/20
-      const width = canvas.width/10
       const gameData = new Array()
-
       for (let i = 0; i < 20; i++) {
         gameData[i] = new Array()
         for (let j = 0; j < 10; j++) {
           gameData[i][j] = 0
-          this.gameData = gameData
-          // this.updataData()
-          if(gameData[i][j] != 0) {
-            context.fillStyle = "#67c23a"
-            context.fillRect(width * j, height * i, width, height);
-          }
         }
       }
+      this.gameData = gameData  
+
+      this.randomSquare()
+      this.updataData()
+      this.squareMove()
     }
   },
   methods: {
+    // 动态设置游戏区宽高
     setCanvas() {
-      let viewHeight = Math.floor(window.innerHeight||document.documentElement.clientHeight)
-      let viewWidth = Math.floor(window.innerWidth||document.documentElement.clientWidth)
-      let canvas = this.canvas
+      const viewHeight = Math.floor(window.innerHeight||document.documentElement.clientHeight)
+      const viewWidth = Math.floor(window.innerWidth||document.documentElement.clientWidth)
+      const canvas = this.canvas
       canvas.height = Math.min(viewWidth, viewHeight) - 200
       canvas.width =  canvas.height/2
     },
-    updataData() {      
-      const curData = [
-        [0, 1, 1, 0],
-        [0, 0, 1, 0],
-        [0, 0, 1, 0],
-        [0, 0, 0, 0]
-      ]
-      const location = {
-        x: 0,
-        y: 4
-      }      
+
+    // 更新游戏数据
+    updataData() {  
+      const gameData =  this.gameData
+      const canvas = this.canvas
+      const context = this.context
+      const height = canvas.height/20
+      const width = canvas.width/10  
+      const position = this.position
+      const curData = this.curData
+
       for (let i = 0; i < curData.length; i++) {
         for (let j = 0; j < curData[i].length; j++) {
-          this.gameData[location.x + i][location.y+j] = curData[i][j]
+          if(this.checkValid(i,j) && curData[i][j] !== 0) {
+            gameData[position.y + i][position.x+j] = curData[i][j] 
+          }
         }
+      }
+
+      for (let i = 0; i < 20; i++) {
+        for (let j = 0; j < 10; j++) {
+          if(gameData[i][j] != 0) {
+            context.fillStyle = squareColor[gameData[i][j]]
+            context.fillRect(width * j, height * i, width, height)
+          } else {
+            context.fillStyle = "white"
+            context.fillRect(width * j, height * i, width, height)
+            context.strokeStyle = "white";
+            context.strokeRect(width * j, height * i, width, height)
+          }
+        }
+      }
+    },
+    
+    // 随机生成方块和位置
+    randomSquare() {
+      let pos = random(0,9)
+      let kind = random(0,6)
+      let index = random(0,3)
+      this.curData = square[kind][index]
+      this.position.x = pos
+      function random(min,max) {
+        return Math.floor(Math.random() * (max - min)) + min
+      }
+    },
+
+    // 下落前清除原来位置的方块
+    clearSquare() {
+      let curData = this.curData
+      let position = this.position
+      let gameData = this.gameData
+      for (let i = 0; i < curData.length; i++) {
+        for (let j = 0; j < curData[i].length; j++) {
+            gameData[position.y + i][position.x+j] = 0
+        }
+      }
+    },
+
+    // 方块下落
+    squareMove() {
+      this.timer = setInterval(()=>{
+        this.clearSquare()
+        this.position.y += 1
+        this.updataData()
+      },1000)
+    },
+
+    // 检查数据是否有效
+    checkValid(i,j) {
+      let gameData = this.gameData
+      let pos = this.position
+      if (pos.x + j < 0 || pos.y + i < 0 ||  pos.x + j >= gameData[0].length ||  pos.y + i >= gameData.length || gameData[pos.y + i][pos.x + j] > 0) {
+        clearInterval(this.timer)
+        // setTimeout(()=>{
+        //   this.randomSquare()
+        //   this.updataData()
+        //   this.squareMove()
+        // },1000)
+        return false
+      } else {
+        return true
       }
     }
   }

@@ -36,7 +36,6 @@ export default {
       this.gameData = gameData  
 
       this.randomSquare()
-      this.updataData()
       this.squareMove()
     }
   },
@@ -63,8 +62,11 @@ export default {
       for (let i = 0; i < curData.length; i++) {
         for (let j = 0; j < curData[i].length; j++) {
           if(this.checkValid(i,j) && curData[i][j] !== 0) {
-            gameData[position.y + i][position.x+j] = curData[i][j] 
-          } 
+            gameData[position.y + i][position.x + j] = curData[i][j] 
+          } else if(!this.checkValid(i,j)) {
+            this.pauseGame()
+            this.nextSquare()
+          }
         }
       }
 
@@ -73,6 +75,8 @@ export default {
           if(gameData[i][j] != 0) {
             context.fillStyle = squareColor[gameData[i][j]]
             context.fillRect(width * j, height * i, width, height)
+            context.strokeStyle = "white"
+            context.strokeRect(width * j, height * i, width, height)
           } else {
             context.fillStyle = "white"
             context.fillRect(width * j, height * i, width, height)
@@ -100,7 +104,7 @@ export default {
       let gameData = this.gameData
       for (let i = 0; i < curData.length; i++) {
         for (let j = 0; j < curData[i].length; j++) {
-            gameData[position.y + i][position.x+j] = 0
+          gameData[position.y + i][position.x + j] = 0
         }
       }
     },
@@ -108,7 +112,7 @@ export default {
     // 计算一个值在数组中的个数
     count(arr,num){
       var i = 0;
-      arr.find(function(item){
+      arr.find((item) => {
         item === num ? i++ : ''; 
       })
       return i
@@ -117,35 +121,46 @@ export default {
     // 方块下落
     squareMove() {
       let curData = this.curData
-      for (let i = 3; i >= 0; i--) {
-        let arr = curData[i]
-        if(this.count(arr,0) == arr.length) curData.splice(i,1)
+      if(curData.length > 0) {
+        for (let i = 3; i >= 0; i--) {
+          let arr = curData[i]
+          if(this.count(arr,0) == arr.length) curData.splice(i,1)
+        }
       }
 
       this.timer = setInterval(()=>{
         this.clearOld()
         this.position.y += 1
         this.updataData()
-      },1000)
+      },100)
     },
     // 暂停游戏
     pauseGame() {
+      let timer = this.timer
       if (timer) {
         clearInterval(timer)
       }
     },
+    nextSquare() {
+      // this.curData = []
+      this.position = { x: 0,y: 0 }
+      this.randomSquare()
+      this.squareMove()
+    },
     // 检查数据是否有效
     checkValid(i,j) {
       let gameData = this.gameData
+      let cur = this.curData
       let pos = this.position
-      // clearInterval(this.timer)
-      // setTimeout(()=>{
-      //   this.randomSquare()
-      //   this.updataData()
-      //   this.squareMove()
-      // },1000)
-      if (pos.x + j < 0 || pos.y + i < 0 || pos.x + j >= gameData[0].length-1 || pos.y + i >= gameData.length-1 || gameData[pos.y + i][pos.x + j] > 0) {
-        clearInterval(this.timer)
+      if (pos.x + j < 0) {
+        return false
+      } else if (pos.y + i < 0) {
+        return false
+      }else if (pos.y + i >= gameData.length) {
+        return false
+      }else if (pos.x + j > gameData[0].length) {
+        return false
+      }else if (gameData[pos.y + i][pos.x + j] > 0) {
         return false
       } else {
         return true

@@ -30,7 +30,7 @@
     }
   </style>
   <script>
-    fetch('/comment.json')
+    fetch('./comment.json')
       .then(res => res.json())
       .then(json => showcomment(json))
 

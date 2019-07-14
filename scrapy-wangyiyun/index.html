@@ -6,29 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>来自网易云音乐的评论</title>
   <style>
-    body { background:#E5E6D0; max-width:400px; margin: 0 auto}
+    body { background:#E5E6D0; margin: 0 auto}
+    * { box-sizing: border-box; margin: 0; padding: 0;}
     h3 { margin: 30px auto 40px;text-align: center;}
-    .comment-container {
-      position:relative; max-width:400px; margin:18px auto;
-    }
-    .avatar {
-      position:absolute; top:20px; width:31px; height:31px; padding:5px; background:#E5E6D0;border-radius:50%;
-    }
-    .avatar a {
-      display:block; width:31px; height:31px; background:#01cc01; border-radius:50%;
-    }
-    .comment {
-      box-sizing: border-box;
-      margin: 0 8px 0 16px;padding:10px 10px 10px 30px;min-height:40px;
-      background: #F0F0E3;
-      color: #696A52;
-      border-radius: 5px;
-      box-shadow: 0 1px 2px rgba(0,0,0,.17), 0 1px 0 rgba(255,255,255,.75) inset;
-    }
-    .comment .from {
-      text-align: right;
-      margin-top: 10px;
-    }
+    .comment-container { position:relative; max-width:500px; margin:18px auto; }
+    .avatar { position:absolute; top:20px; width:31px; height:31px; padding:5px; background:#E5E6D0;border-radius:50%; }
+    .avatar a { display:block; width:31px; height:31px; background:#01cc01; border-radius:50%; }
+    .comment { margin: 0 8px 0 16px;padding:10px 10px 10px 30px;min-height:40px; background: #F0F0E3; color: #696A52; border-radius: 5px; box-sizing: border-box; box-shadow: 0 1px 2px rgba(0,0,0,.17), 0 1px 0 rgba(255,255,255,.75) inset;}
+    .comment .from { text-align: right; margin-top: 10px; }
   </style>
   <script>
     fetch('./comment.json')
@@ -52,8 +37,10 @@
 
 </head>
 <body>
-  <H3>来自网易云音乐的评论</H3>
-  <div id="comments">
+  <div class="comment-page">
+    <H3>来自网易云音乐的评论</H3>
+    <div id="comments">
+  </div>
   </div>
 </body>
 </html>

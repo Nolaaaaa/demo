@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>来自网易云音乐的评论</title>
   <style>
     body { background:#E5E6D0; max-width:400px; margin: 0 auto}
     h3 { margin: 30px auto 40px;text-align: center;}
@@ -19,7 +19,7 @@
     }
     .comment {
       box-sizing: border-box;
-      margin:20px;padding:10px 10px 10px 30px;min-height:40px;
+      margin: 0 8px 0 16px;padding:10px 10px 10px 30px;min-height:40px;
       background: #F0F0E3;
       color: #696A52;
       border-radius: 5px;
@@ -43,7 +43,7 @@
             </div>
             <div class="comment">
               <div>${comment.comment}</div>
-              <div class="from">${comment.music}--${comment.name}--${comment.like}❤</div>
+              <div class="from">《${comment.music}》${comment.name}--${comment.like}❤</div>
             </div>
           </div>`
         ).join('')

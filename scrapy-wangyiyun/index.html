@@ -8,7 +8,7 @@
   <style>
     body { background:#E5E6D0; }
     .comment-container {
-      position:relative; width:500px; margin:18px auto;
+      position:relative; width:400px; margin:18px auto;
     }
     .avatar {
       position:absolute; top:20px; width:31px; height:31px; padding:5px; background:#E5E6D0;border-radius:50%;
@@ -17,16 +17,15 @@
       display:block; width:31px; height:31px; background:#01cc01; border-radius:50%;
     }
     .comment {
-      margin-left:20px;padding:10px 10px 10px 30px ;height:80px;
+      margin-left:20px;padding:10px 10px 10px 30px;min-height:40px;
       background: #F0F0E3;
       color: #696A52;
       border-radius: 5px;
       box-shadow: 0 1px 2px rgba(0,0,0,.17), 0 1px 0 rgba(255,255,255,.75) inset;
     }
     .comment .from {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
+      text-align: right;
+      margin-top: 10px;
     }
   </style>
   <script>
@@ -42,7 +41,7 @@
             </div>
             <div class="comment">
               <div>${comment.comment}</div>
-              <div class="from">${comment.name}--${comment.like}❤</div>
+              <div class="from">来自网易云${comment.name}--${comment.like}❤</div>
             </div>
           </div>`
         ).join('')

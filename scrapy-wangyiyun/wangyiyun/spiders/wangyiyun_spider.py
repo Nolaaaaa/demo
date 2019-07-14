@@ -49,6 +49,6 @@ class WangyiyunSpiderSpider(scrapy.Spider):
             comment_item['comment'] = i['content']
             comment_item['like'] = i['likedCount']
             comment_item['name'] = i['user']['nickname']
-            comment_item['avatar'] = i['user']['avatar']
+            comment_item['avatar'] = i['user']['avatarUrl']
             # comment_item['music'] = '我是歌曲名，但是我还不知道我叫什么'
             yield comment_item

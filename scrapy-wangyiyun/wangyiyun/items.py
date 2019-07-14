@@ -15,4 +15,3 @@ class WangyiyunItem(scrapy.Item):
     like = scrapy.Field()
     name = scrapy.Field()
     music = scrapy.Field()
-    avatar = scrapy.Field()

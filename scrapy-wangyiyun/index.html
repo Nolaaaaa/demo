@@ -6,9 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    body { background:#E5E6D0; }
+    body { background:#E5E6D0; max-width:400px; margin: 0 auto}
+    h3 { margin: 30px auto 40px;text-align: center;}
     .comment-container {
-      position:relative; width:400px; margin:18px auto;
+      position:relative; max-width:400px; margin:18px auto;
     }
     .avatar {
       position:absolute; top:20px; width:31px; height:31px; padding:5px; background:#E5E6D0;border-radius:50%;
@@ -42,7 +43,7 @@
             </div>
             <div class="comment">
               <div>${comment.comment}</div>
-              <div class="from">来自网易云${comment.name}--${comment.like}❤</div>
+              <div class="from">${comment.music}--${comment.name}--${comment.like}❤</div>
             </div>
           </div>`
         ).join('')
@@ -51,6 +52,8 @@
 
 </head>
 <body>
-  <div id="comments"></div>
+  <H3>来自网易云音乐的评论</H3>
+  <div id="comments">
+  </div>
 </body>
 </html>

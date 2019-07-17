@@ -5,7 +5,7 @@ Some sapid demo from my daily life ，Vue、nodejs、webpack、CSS
 
 [时钟](https://nolaaaaa.github.io/demo/css-clock/)
 
-[五子棋](https://nolaaaaa.github.io/demo/js-gomoku/)
+[五子棋](https://nolaaaaa.github.io/demo/canvas-gomoku/)
 
 [皮卡丘](https://nolaaaaa.github.io/demo/css-pikachu/static/)
 

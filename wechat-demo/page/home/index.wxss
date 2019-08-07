@@ -1,0 +1,30 @@
+
+
+/* 会摇动的小图标 */
+.activity {
+  position: fixed;
+  z-index: 900;
+  right: 18rpx;
+  bottom: 60rpx;
+  width: 96rpx;
+  transform-origin: bottom center;
+  animation: swing 4s .15s linear infinite;
+}
+@keyframes swing {
+  10% {
+    transform: rotate(5deg);
+  }
+  20% {
+    transform: rotate(-5deg);
+  }
+  30% {
+    transform: rotate(5deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+}

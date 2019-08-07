@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "page/home/index",
+    "page/pie/index",
+    "page/random/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0A0B0D",
+    "navigationBarTitleText": "玉米打卡",
+    "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

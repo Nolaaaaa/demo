@@ -1,0 +1,6 @@
+<!--page/home/index.wxml-->
+<navigator url="/page/random/index">随机选择内容</navigator>
+<navigator url="/page/pie/index">canvas圆环图</navigator>
+
+
+<image class="activity"  mode="aspectFit" src="http://statics.yourgenex.com/assets/citem/pushNew/entry.png"/>

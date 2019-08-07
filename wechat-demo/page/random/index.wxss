@@ -1,0 +1,18 @@
+.page-container {
+  box-sizing: border-box;
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.choose {
+  box-sizing: border-box;
+  border: 1rpx solid green;
+}

@@ -1,0 +1,1 @@
+ <canvas class="canvas" canvas-id="pie" bind:tap="onTap"></canvas> 

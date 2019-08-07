@@ -1,0 +1,5 @@
+<view class="page-container">
+  <view class="item {{curIndex==index?'choose':''}}" 
+    wx:for="{{15}}" wx:key="{{index}}" 
+    style="width: {{width}}px; height: {{height}}px; background: {{index%2?'#E9E9E9':'#F1F1F1'}};">{{index}}</view>
+</view>

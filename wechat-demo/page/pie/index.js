@@ -4,9 +4,9 @@ Page({
     obj: {
       canvasId: 'pie',                                // String：canvasID
       color: ['#FFA500', '#C0FF3E', '#00FFFF', '#FFD700'], // Array：颜色
-      width: [8, 12, 16, 24],                              // Array|Number：圆弧宽度
+      width: [20, 24, 30, 38],                              // Array|Number：圆弧宽度
       degree: [30, 70, 100, 160],                          // Array：度数
-      rotate: 120,                                         // Number：旋转角度
+      rotate: 0,                                         // Number：旋转角度
       origin: [110, 110],                                  // Array：圆心
       radius: 60,                                          // Number：半径
     },
@@ -63,30 +63,43 @@ Page({
   },
 
   // 点击 pie 的时候
-  onTap() {
-    let obj = this.data.obj, step = this.data.step, curPieIndex = this.data.curPieIndex
+  onTap(e) {
+    let obj = this.data.obj, step = this.data.step, curPieIndex = this.data.curPieIndex;
     // 根据点击的位置不同动态改变 curPieIndex 的值
-    /*🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒*/
+    wx.canvasGetImageData({
+      canvasId: obj.canvasId,
+      x: e.detail.x - e.target.offsetLeft,
+      y: e.detail.y - e.target.offsetTop,
+      width: 1,
+      height: 1,
+      success: res => {
+        const color = [].slice.call(res.data, 0, 3).map(item => {
+          const hex = item.toString(16)
+          return hex < 16 ? `0${hex}` : hex
+        }).join('').toUpperCase()
+        curPieIndex = obj.color.findIndex(item => item.indexOf(color) > 0)
 
-    // 如果 curPieIndex 值不对，return
-    if (curPieIndex > obj.degree.length - 1) return
+        // 如果 curPieIndex 值不对，return
+        if (curPieIndex > obj.degree.length - 1 || curPieIndex < 0) return
 
-    // 这个圆弧中点旋转到底部 Math.PI/2 所需要的角度
-    let temp = (Math.PI / 2 - (step[curPieIndex] + step[curPieIndex + 1]) / 2) * 180 / Math.PI
-    let disRotate = temp > 0 ? temp : 360 + temp      // 从当前开始需要旋转的角度
+        // 这个圆弧中点旋转到底部 Math.PI/2 所需要的角度
+        let temp = (Math.PI / 2 - (step[curPieIndex] + step[curPieIndex + 1]) / 2) * 180 / Math.PI
+        let disRotate = temp > 0 ? temp : 360 + temp      // 从当前开始需要旋转的角度
 
-    // 旋转到目标位置
-    let curRotate = JSON.parse(JSON.stringify(obj.rotate))      // 初始角度
-    let i = curRotate, timerId = setInterval(() => {
-      obj.rotate = i
-      this.init(obj)
-      i > disRotate + curRotate ? clearInterval(timerId) : i++
-    }, 4)
-
-    // 数据存起来
-    this.setData({
-      obj,
-      curPieIndex
+        // 旋转到目标位置
+        obj.rotate = obj.rotate >= 360 ? obj.rotate - 360 : obj.rotate
+        let curRotate = JSON.parse(JSON.stringify(obj.rotate))      // 初始角度
+        let i = curRotate, timerId = setInterval(() => {
+          obj.rotate = i
+          this.init(obj)
+          i > disRotate + curRotate ? clearInterval(timerId) : i++
+        }, 4)
+        // 数据存起来
+        this.setData({
+          obj,
+          curPieIndex
+        })
+      }
     })
   },
 })

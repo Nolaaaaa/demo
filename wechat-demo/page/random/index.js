@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    times: 9,
+    endIndex: undefined,
   },
   onLoad: function (options) {
     wx.getSystemInfo({
@@ -19,7 +20,7 @@ Page({
   },
 
   onReady: function () {
-    this.randomBlock(10, this.data.endIndex)
+    this.randomBlock(this.data.times, this.data.endIndex)
   },
   
   /**

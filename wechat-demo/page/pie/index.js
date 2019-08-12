@@ -4,7 +4,7 @@ Page({
     obj: {
       canvasId: 'pie',                                // String：canvasID
       color: ['#FFA500', '#C0FF3E', '#00FFFF', '#FFD700'], // Array：颜色
-      width: [20, 24, 30, 38],                              // Array|Number：圆弧宽度
+      width: [20, 20, 20, 20],                              // Array|Number：圆弧宽度
       degree: [30, 70, 100, 160],                          // Array：度数
       rotate: 0,                                         // Number：旋转角度
       origin: [110, 110],                                  // Array：圆心
@@ -64,7 +64,11 @@ Page({
 
   // 点击 pie 的时候
   onTap(e) {
-    let obj = this.data.obj, step = this.data.step, curPieIndex = this.data.curPieIndex;
+    let obj = this.data.obj, 
+        step = this.data.step, 
+        curPieIndex = this.data.curPieIndex, 
+        delay = 200,
+        larger = 4
     // 根据点击的位置不同动态改变 curPieIndex 的值
     wx.canvasGetImageData({
       canvasId: obj.canvasId,
@@ -78,13 +82,16 @@ Page({
           return hex < 16 ? `0${hex}` : hex
         }).join('').toUpperCase()
         curPieIndex = obj.color.findIndex(item => item.indexOf(color) > 0)
+        obj.width[curPieIndex] = Number(obj.width[curPieIndex]) + larger
 
         // 如果 curPieIndex 值不对，return
         if (curPieIndex > obj.degree.length - 1 || curPieIndex < 0) return
 
         // 这个圆弧中点旋转到底部 Math.PI/2 所需要的角度
-        let temp = (Math.PI / 2 - (step[curPieIndex] + step[curPieIndex + 1]) / 2) * 180 / Math.PI
-        let disRotate = temp > 0 ? temp : 360 + temp      // 从当前开始需要旋转的角度
+        let a = (step[curPieIndex] + step[curPieIndex + 1]) / 2
+        a = a > 2 * Math.PI ? a - 2 * Math.PI : a
+        let b = (Math.PI / 2 - a) * 180 / Math.PI
+        let disRotate = b > 0 ? b : 360 + b      // 从当前开始需要旋转的角度
 
         // 旋转到目标位置
         obj.rotate = obj.rotate >= 360 ? obj.rotate - 360 : obj.rotate
@@ -93,7 +100,13 @@ Page({
           obj.rotate = i
           this.init(obj)
           i > disRotate + curRotate ? clearInterval(timerId) : i++
-        }, 4)
+        }, 2)
+        setTimeout(() => {
+          obj.width[curPieIndex] = Number(obj.width[curPieIndex]) - larger
+          this.setData({
+            obj
+          })
+        }, delay)
         // 数据存起来
         this.setData({
           obj,

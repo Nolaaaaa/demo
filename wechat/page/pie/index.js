@@ -4,7 +4,7 @@ Page({
     obj: {
       canvasId: 'pie',                                // String：canvasID
       color: ['#FFA500', '#C0FF3E', '#00FFFF', '#FFD700'], // Array：颜色
-      width: [20, 20, 20, 20],                              // Array|Number：圆弧宽度
+      width: [25, 25, 25, 25],                              // Array|Number：圆弧宽度
       degree: [30, 70, 100, 160],                          // Array：度数
       rotate: 0,                                         // Number：旋转角度
       origin: [110, 110],                                  // Array：圆心

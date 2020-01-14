@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <Tetris/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Tetris from '@/pages/Tetris'
 export default {
   name: 'App',
-  components: {
-    Tetris,
-  },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
-<style>
+<style lang="less">
+* {
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

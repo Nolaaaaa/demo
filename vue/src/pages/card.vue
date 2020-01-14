@@ -72,7 +72,7 @@ export default {
       let star = this.randomStar()
       let curAgent = this.agents[star]
 
-      this.result.push({
+      this.result.unshift({
         star,
         name: curAgent[this.randomNum(0, curAgent.length-1)]
       })

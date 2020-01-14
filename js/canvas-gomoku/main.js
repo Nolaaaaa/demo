@@ -35,11 +35,11 @@
       let n = 1
       canvas.onmousedown = function (e) {
         if (n === 1) {
-          playChess('#000000', width/2.5, n)
-          n = n + 1
+          let a = playChess('#000000', width/2.5, n)
+          if(a) n = n + 1
         } else if (n === 2) {
-          playChess('#ffffff', width/2.5, n)
-          n = n - 1
+          let a = playChess('#ffffff', width/2.5, n) 
+          if(a) n = n - 1
         }
       }
     }
@@ -72,11 +72,10 @@
       let indY = Math.round(y/height)
 
       // 禁止下在边缘上
-      if(indX == 0 || indX == 15 || indY == 0 || indY == 15) return 
-
+      if(indX == 0 || indX == 15 || indY == 0 || indY == 15) return false
 
       // 下过的地方不允许下
-      if(arr[indY][indX] !== 0) return
+      if(arr[indY][indX] !== 0) return false
 
       // 保存下棋的状态
       arr[indY][indX] = n
@@ -85,6 +84,8 @@
       x = indX * width + 4
       y = indY * height + 4
       drawCircle(x, y, radius)
+
+      return true
     }
 
 

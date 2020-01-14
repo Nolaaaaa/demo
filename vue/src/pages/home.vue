@@ -1,7 +1,7 @@
 <template>
   <div id="home">
-    <div @click="toPage('tetris')">五子棋</div>
-    <div @click="toPage('card')">抽卡</div>
+    <el-button @click="toPage('tetris')">俄罗斯方块</el-button>
+    <el-button @click="toPage('card')">抽卡</el-button>
   </div>
 </template>
 
@@ -24,15 +24,15 @@ export default {
 </script>
 
 <style  lang="less" scoped>
-#app {
+#home {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
-div:hover {
-  cursor: pointer;
+  padding: 40px;
+  .el-button {
+    margin: 10px;
+  }
 }
 </style>

@@ -67,7 +67,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: false  // 解决打包后打包文件没有引号的问题
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },

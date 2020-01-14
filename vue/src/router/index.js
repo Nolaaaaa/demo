@@ -4,10 +4,10 @@ import Home from '@/pages/home'
 import Card from '@/pages/card'
 import Tetris from '@/pages/tetris'
 
+
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',

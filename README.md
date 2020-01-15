@@ -17,4 +17,4 @@ Some sapid demo from my daily life ，Vue、nodejs、webpack、CSS
 
 [爬取的网易云评论展示](https://nolaaaaa.github.io/demo/python/scrapy-wangyiyun/index)
 
-[明日方舟模拟抽卡](https://nolaaaaa.github.io/demo/vue/dist)
+[明日方舟模拟抽卡](https://nolaaaaa.github.io/demo/vue/dist/#/card)

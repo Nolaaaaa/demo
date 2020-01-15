@@ -40,6 +40,30 @@
 </template>
 
 <script>
+// 增长率
+let ODDS_ADD = 2
+
+// 没TIMES次增加一次概率
+let TIMES = 50
+
+// 概率
+let ODDS_INIT = { 
+  'three': 40,
+  'four': 50,
+  'five': 8,
+  'six': 2,
+}
+
+// 干员
+let AGENT_LIST = { 
+  // 'one': ['Lancet-2', 'Castle-3'],
+  // 'two': ['夜刀', '杜林', '巡林者', '黑角', '12F'],
+  'three': ['芬', '克洛丝', '炎熔', '米格鲁', '芙蓉', '卡缇', '史都华德', '香草', '玫兰莎', '安赛尔', '梓兰', '翎羽', '安德切尔', '空爆', '月见夜', '斑点', '泡普卡'],
+  'four':  ['深海色', '杜宾', '梅', '白雪', '远山', '流星', '夜烟', '末药', '蛇屠箱', '艾丝黛尔', '猎蜂', '嘉维尔', '慕斯', '砾', '暗索', '调香师', '地灵', '讯使', '清道夫', '霜叶', '角峰', '古米', '断罪者', '缠丸', '阿消', '红豆', '杰西卡', '格雷伊', '苏苏洛', '桃金娘', '坚雷', '红云', '伊桑', '安比尔'],
+  'five':  ['德克萨斯', '凛冬', '芙兰卡', '幽灵鲨', '白面鸮', '普罗旺斯', '蓝毒', '阿米娅', '赫默', '临光', '红', '雷蛇', '夜魔', '天火', '因陀罗', '初雪', '拉普兰德', '华法琳', '守林人', '真理', '狮蝎', '火神', '白金', '陨星', '梅尔', '可颂', '崖心', '食铁兽', '空', '暴行', '格拉尼', '诗怀雅', '格劳克斯', '锡兰', '星极', '炎客', '送葬人', '微风', '拜松', '槐琥', '苇草', '布洛卡', '灰喉', '雪雉', '吽'],
+  'six': ['推进之王', '能天使', '星熊', '闪灵', '伊芙利特', '塞雷娅', '银灰', '夜莺', '艾雅法拉', '陈', '凯尔希', '安洁莉娜', '斯卡蒂', '黑', '赫拉格', '麦哲伦', '莫斯提马', '煌', '阿'],
+}
+
 export default {
   data() {
     return { 
@@ -52,25 +76,17 @@ export default {
         'six': 0,
       },
       odds: {  // 概率
-        'three': 42,
-        'four': 48,
+        'three': 40,
+        'four': 50,
         'five': 8,
         'six': 2,
       },
-      agents: { // 干员
-        // 'one': ['Lancet-2', 'Castle-3'],
-        // 'two': ['夜刀', '杜林', '巡林者', '黑角', '12F'],
-        'three': ['芬', '克洛丝', '炎熔', '米格鲁', '芙蓉', '卡缇', '史都华德', '香草', '玫兰莎', '安赛尔', '梓兰', '翎羽', '安德切尔', '空爆', '月见夜', '斑点', '泡普卡'],
-        'four':  ['深海色', '杜宾', '梅', '白雪', '远山', '流星', '夜烟', '末药', '蛇屠箱', '艾丝黛尔', '猎蜂', '嘉维尔', '慕斯', '砾', '暗索', '调香师', '地灵', '讯使', '清道夫', '霜叶', '角峰', '古米', '断罪者', '缠丸', '阿消', '红豆', '杰西卡', '格雷伊', '苏苏洛', '桃金娘', '坚雷', '红云', '伊桑', '安比尔'],
-        'five':  ['德克萨斯', '凛冬', '芙兰卡', '幽灵鲨', '白面鸮', '普罗旺斯', '蓝毒', '阿米娅', '赫默', '临光', '红', '雷蛇', '夜魔', '天火', '因陀罗', '初雪', '拉普兰德', '华法琳', '守林人', '真理', '狮蝎', '火神', '白金', '陨星', '梅尔', '可颂', '崖心', '食铁兽', '空', '暴行', '格拉尼', '诗怀雅', '格劳克斯', '锡兰', '星极', '炎客', '送葬人', '微风', '拜松', '槐琥', '苇草', '布洛卡', '灰喉', '雪雉', '吽'],
-        'six': ['推进之王', '能天使', '星熊', '闪灵', '伊芙利特', '塞雷娅', '银灰', '夜莺', '艾雅法拉', '陈', '凯尔希', '安洁莉娜', '斯卡蒂', '黑', '赫拉格', '麦哲伦', '莫斯提马', '煌', '阿'],
-      }
     }
   },
   methods: {
     oneDraw() {
       let star = this.randomStar()
-      let curAgent = this.agents[star]
+      let curAgent = AGENT_LIST[star]
 
       this.result.unshift({
         star,
@@ -80,16 +96,18 @@ export default {
       this.starNum[star] += 1
       this.times += 1
 
-      // 抽取次数达到50次，提高6星获取概率
-      if(this.times >= 50) {
-        this.odds.six += 2
+      // 抽取次数达到TIMES次，提高6星获取概率
+      if(this.times >= TIMES) {
+        this.odds.six += ODDS_ADD
         this.times = 0
+        this.changeOdds() 
       }
       
       // 获得6星恢复概率
       if(star == 'six') {
-        this.odds.six = 2
+        this.odds.six = ODDS_ADD
         this.times = 0
+        this.changeOdds()
       }
     },
 
@@ -100,6 +118,22 @@ export default {
 
     },
     
+    changeOdds() {
+      let odds = this.odds
+      if(odds.six == ODDS_INIT.six) {
+        this.odds = {...ODDS_INIT}    // 注意：如果直接赋值(引用)，会改变ODDS_INIT的值
+      } else {
+        let _total = 100 - ODDS_INIT.six
+        let _curTotal = 100 - odds.six
+
+        for(let i in odds) {
+          odds[i] = i != 'six' ? ODDS_INIT[i] * _curTotal / _total : odds[i]
+        }
+
+        // console.log(eval(Object.values(odds).join("+")))
+      }
+    },
+
     clear() {
       this.result = []
       this.times = 0
@@ -109,14 +143,15 @@ export default {
         'five': 0,
         'six': 0,
       }
+      this.odds = {...ODDS_INIT}
     },
 
     randomStar() {
       let odds = this.odds
-      let num = this.randomNum(1, eval(Object.values(odds).join("+")))
+      let num = this.randomNum(1, 100)
 
       if(num <= odds.six) {
-        return 'six'
+        return 'five'
       }
 
       if(num <= odds.six + odds.five) {

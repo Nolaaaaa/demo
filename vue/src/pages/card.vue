@@ -151,7 +151,7 @@ export default {
       let num = this.randomNum(1, 100)
 
       if(num <= odds.six) {
-        return 'five'
+        return 'six'
       }
 
       if(num <= odds.six + odds.five) {

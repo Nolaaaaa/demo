@@ -1,0 +1,21 @@
+*{ margin: 0; padding: 0; }
+
+body{ display: flex; justify-content: center; flex-direction: column; }
+
+.seamless, .gap{ width: 300px; height: 200px; overflow: hidden; margin:20px auto; }
+
+.images{ display: flex; align-items: flex-start; transition: all 0.5s; }
+.images img{ width: 300px; }
+
+.seamless .images{ position: relative; top: 0; }
+.seamless .images img{ position: absolute; z-index: -1; }
+.seamless .images img.enter{ transform: translateX(-100%); }
+.seamless .images img.current{ transform: translateX(0); animation: current 1s; z-index: 1;}
+.seamless .images img.leave{ left: 0; transform: translateX(100%); animation: leave 1s;}  
+
+@keyframes current { from { transform: translateX(100%); } to { transform: translateX(0%);}}
+@keyframes leave { from { transform: translateX(0%); } to { transform: translateX(-100%);}}
+
+.buttons{ cursor: pointer; display: flex; justify-content: center;}
+.buttons button{ padding: 0 3px; margin: 0 2px; }
+.red{ color: red; }

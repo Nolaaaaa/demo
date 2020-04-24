@@ -113,7 +113,7 @@ export default {
     count(arr,num){
       var i = 0;
       arr.find((item) => {
-        item === num ? i++ : ''; 
+        item === num ? i++ : ''
       })
       return i
     },

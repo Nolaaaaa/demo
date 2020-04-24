@@ -1,10 +1,10 @@
 (function () {
-  let canvas = document.getElementById("canvas");
+  let canvas = document.getElementById("canvas")
   if (canvas === null) return false;
   if (canvas.getContext) {
 
     // getContext("2d") 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法
-    let context = canvas.getContext('2d');
+    let context = canvas.getContext('2d')
 
     // 画棋盘
     setChecker()
@@ -14,7 +14,7 @@
     
 
     // 建一个二维数组用来存下过的棋，i 指 y 轴坐标，j 指 x 轴坐标
-    const arr = new Array();
+    const arr = new Array()
     for (let i = 1; i < 15; i++) {
       arr[i] = new Array()
       for (let j = 1; j < 15; j++) {
@@ -49,14 +49,12 @@
 
     /************函数部分不要看***********/
 
-    // 检测所使用的设备，并确定画布的宽高
+    // 根据所使用的设备，确定画布的宽高 
     function setChecker(){
-      // console.log(navigator.platform)
       let viewHeight = Math.floor(window.innerHeight||document.documentElement.clientHeight)
       let viewWidth = Math.floor(window.innerWidth||document.documentElement.clientWidth)
       canvas.width = Math.min(viewWidth, viewHeight) - 60
       canvas.height =  canvas.width
-
     }
 
     // 下棋的函数
@@ -81,8 +79,8 @@
       arr[indY][indX] = n
 
       // 让棋子下在交叉线的位置
-      x = indX * width + 4
-      y = indY * height + 4
+      x = indX * width
+      y = indY * height
       drawCircle(x, y, radius)
 
       return true
@@ -92,7 +90,7 @@
     // 画一个圆的函数
     function drawCircle(x, y, radius) {
       context.beginPath()
-      context.arc(x-4, y-4, radius, 0, Math.PI * 2)
+      context.arc(x, y, radius, 0, Math.PI * 2)
       context.fill()
       context.stroke()
     }

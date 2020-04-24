@@ -19,13 +19,11 @@
       position: relative;
       margin: 100px auto;
       background: linear-gradient(to bottom, #ffff 0%, #ffff 50%, #000000 50%, #000000 100%);
-      /*animation-duration 属性指定一个动画周期的时长。默认值为0s，表示无动画。*/
-      animation-duration: 3s;
+      /* animation-duration: 3s;
       animation-name: spin;
-      /*infinite 循环播放。animation-iteration-count：动画在结束前运行的次数 可以是1次 无限循环。*/
       animation-iteration-count: infinite;
-      /*CSS animation-timing-function：CSS动画在每一动画周期中执行的节奏。*/
-      animation-timing-function: linear;
+      animation-timing-function: linear; */
+      animation: 3s spin infinite linear;  /* 简写 */
     }
     #yinyang:before {
       position: absolute;

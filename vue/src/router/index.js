@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/pages/home'
 import Card from '@/pages/card'
 import Tetris from '@/pages/tetris'
+import Resume from '@/pages/resume'
 
 
 Vue.use(Router)
@@ -20,6 +21,10 @@ export default new Router({
     {
       path: '/card',
       component: Card,
+    },
+    {
+      path: '/resume',
+      component: Resume,
     },
   ]
 })

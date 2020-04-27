@@ -80,10 +80,10 @@ export default {
     return {
       resume: {
         name: '何敏娜',
-        job: '前端开发',
+        job: '前端开发工程师',
         contact: {   // 联系方式
           phone: '17621604220',
-          email: 'venomhmn@qq.com',
+          email: 'venomhmn@163.com',
           wechat: 'heminnaaaa'
         },
         category: [ // 分类
@@ -93,7 +93,7 @@ export default {
               {
                 lists: [
                   '湖南工学院 | 本科 | 安全工程',
-                  '技术博客：https://nolaaaaa.github.io',
+                  '技术博客：https://nolaaaaa.github.io （目前已有71篇）',
                   'Github：https://github.com/Nolaaaaa',
                   '期望薪资：15k~20k',
                   '工作年限：3年'
@@ -108,7 +108,7 @@ export default {
                 header: {
                   time: '2018.8 ~ 2020.4',
                   name: '杭州因睿生物工程有限公司',
-                  job: '前端开发',
+                  job: '前端开发工程师',
                 },
                 lists: [
                   '开发项目：微信小程序、公众号h5（uni-app）、管理后台开发（vue-element-admin）、web开发',
@@ -123,7 +123,7 @@ export default {
                   job: 'QA工程师',
                 },
                 lists: [
-                  '负责内容：Line Qual阶段与客户对接、收集和审核相关资料、追踪处理Issue。组织ISO9001、ISO14001管理体系的相关内部稽核、参与公司的年度内审及第三方认证陪审及后续追踪解决问题等',
+                  '负责内容：Line Qual阶段与客户对接、收集和审核相关资料、追踪处理Issue。负责ISO9001、ISO14001管理体系的相关内审及第三方认证的准备及应审，跟进不符合项及纠正预防等',
                   '离职原因：工作内容与志趣不符'
                 ]
               }
@@ -161,7 +161,7 @@ export default {
                   name: '多个公众号h5',
                 },
                 lists: [
-                  '技术栈：uni-app / vue / less',
+                  '技术栈：uni-app / vue / less / canvas',
                   '实现：微信h5授权、微信SDK分享、扫一扫、支付、订单、活动等主要功能',
                   '为微信SDk分享和扫一扫在安卓/ios上表现不一致的问题提供解决方案',
                   '为微信公众号网页授权登录多域名提供解决方案',
@@ -173,31 +173,20 @@ export default {
                   name: '公司管理后台',
                 },
                 lists: [
-                  '技术栈：vue-element-admin / vue / elementUI / axios / store / vuex',
+                  '技术栈：vue-element-admin / vue / elementUI / axios / router / vuex',
                   '实现：系统管理、渠道管理、用户管理、权益管理、活动管理、内容管理等模块',
                   '使用 addRoutes，根据不同用户权限生成的可访问路由表，动态渲染左侧菜单栏',
                 ]
               },
               {
                 header: {
-                  name: '日常Demo',
+                  name: '开源项目',
                   url: 'https://github.com/Nolaaaaa/demo/blob/master/README.md',
                   codeUrl: 'https://github.com/Nolaaaaa/demo'
                 }
               }
             ],
-          },
-          {
-            name: '自我描述',
-            content: [
-              {
-                lists: [
-                  '良好的沟通协调能力和团队合作能力，工作主动，认真细致',
-                  '较强的学习能力，能在较短的时间内掌握新知识'
-                ]
-              }
-            ],
-          },
+          }
         ]
       }
     };
@@ -215,7 +204,7 @@ export default {
 </script>
 
 <style  lang="less" scoped>
-@color-main: #6aa84f;
+@color-main: #228B22;
 @font-big: 22pt;
 @font-h1: 12pt;
 @font-h2: 10.5pt;
@@ -268,7 +257,7 @@ export default {
            font-size: @font-main; color: black;
            margin: 0.5mm 1.0mm 0.5mm 0.0mm;
            .left { width: 18.0%; text-align: center; }
-           .center { width: 3.8%; text-align: center; vertical-align: top; color: @color-main;  font-weight: bold; }
+           .center { width: 3.8%; text-align: center; vertical-align: top; color: @color-main; }
            .right { width: auto; text-align: left; }
          }
 

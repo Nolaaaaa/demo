@@ -13,8 +13,8 @@ body{ display: flex; justify-content: center; flex-direction: column; }
 .seamless .images img.current{ transform: translateX(0); animation: current 1s; z-index: 1;}
 .seamless .images img.leave{ left: 0; transform: translateX(100%); animation: leave 1s;}  
 
-@keyframes current { from { transform: translateX(100%); } to { transform: translateX(0%);}}
-@keyframes leave { from { transform: translateX(0%); } to { transform: translateX(-100%);}}
+@keyframes current { from { transform: translateX(100%); } to { transform: translateX(0%); } }
+@keyframes leave { from { transform: translateX(0%); } to { transform: translateX(-100%); } }
 
 .buttons{ cursor: pointer; display: flex; justify-content: center;}
 .buttons button{ padding: 0 3px; margin: 0 2px; }
